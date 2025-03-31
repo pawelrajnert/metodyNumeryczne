@@ -157,3 +157,5 @@ while 1:
         wybranoMetode = False
         print("Błąd! Nie wybrano metody!")
 
+    input("Aby kontynuować, naciśnij enter")
+

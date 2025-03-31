@@ -46,7 +46,7 @@ def metodaGaussaSeidla(macierz, wektor):
                         sum += macierz[i, j] * x[j]
                 x[i] = (wektor[i] - sum) / macierz[i, i]
             print(x)
-            if np.all(np.abs(x - xDlaPrzejscia)) <= argument:
+            if np.all(np.abs(x - xDlaPrzejscia) <= argument):
                 break
 
         print("Znaleziono rozwiązanie po liczbie iteracji: ", iteracjeDlaDokladnosci)
