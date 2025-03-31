@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def wyborWarunku():
     print("Dostępne opcje warunku stopu: ")
     print("1) dokładność obliczeń według wzoru |xi − xi−1| < ε")
@@ -7,17 +10,18 @@ def wyborWarunku():
         if wybor == 1:
             eps = float(input("Wprowadź wartość e: "))
             if eps > 0:
-                return eps
+                return ("dok", eps)
             else:
                 print("Nieprawidłowa wartość epsilonu!")
         elif wybor == 2:
             iteracje = int(input("Wprowadź ilość iteracji: "))
             if iteracje > 0:
-                return iteracje
+                return ("it", iteracje)
             else:
                 print("Wprowadzono niepoprawną ilość iteracji.")
         else:
             print("Wybrano błędną opcję!")
+
 
 # Warunek działania metody Gaussa-Seidla- sprawdzenie czy macierz jest diagonalnie dominująca.
 def czyDiagonalnieDominujaca(macierz):
@@ -34,3 +38,8 @@ def czyDiagonalnieDominujaca(macierz):
             return False
 
     return True
+
+
+# Warunek działania metody Gaussa-Seidla- sprawdzenie czy macierz jest dodatnio określona.
+def czyDodatnioOkreslona(macierz):
+    return np.all(np.linalg.eigvals(macierz) > 0)
