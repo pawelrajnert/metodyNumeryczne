@@ -58,6 +58,8 @@ while 1:
           "      [-0.1 -0.2  1]    [x3]   [0.7]\n"
           "(x1 = 1, x2 = 1, x3 = 1)\n")
 
+    print("0) - wczytanie współczynników z pliku wsłasneWspółczynniki.txt\n")
+
     menu = int(input("Wybierz opcję: "))
     wybranoMetode = True
     if menu == 1:
@@ -67,7 +69,6 @@ while 1:
             [1, 2, 1]
         ], dtype=float)
         wektor = np.array([12, 33, 8], dtype=float)
-        metodaGaussaSeidla(macierz, wektor)
 
     elif menu == 2:
         macierz = np.array([
@@ -76,7 +77,6 @@ while 1:
             [-4, -10, -14]
         ], dtype=float)
         wektor = np.array([1, 20, -40], dtype=float)
-        metodaGaussaSeidla(macierz, wektor)
 
     elif menu == 3:
         macierz = np.array([
@@ -85,7 +85,6 @@ while 1:
             [-4, -10, -14]
         ], dtype=float)
         wektor = np.array([1, 20, -20], dtype=float)
-        metodaGaussaSeidla(macierz, wektor)
 
     elif menu == 4:
         macierz = np.array([
@@ -95,7 +94,6 @@ while 1:
             [0.0625, 0, 0.125, 0.25]
         ], dtype=float)
         wektor = np.array([1.5, -1.625, 1, 0.4375], dtype=float)
-        metodaGaussaSeidla(macierz, wektor)
 
     elif menu == 5:
         macierz = np.array([
@@ -105,7 +103,6 @@ while 1:
             [7, 8, 1, -7]
         ], dtype=float)
         wektor = np.array([0, -4, 4, 6], dtype=float)
-        metodaGaussaSeidla(macierz, wektor)
 
     elif menu == 6:
         macierz = np.array([
@@ -115,7 +112,6 @@ while 1:
             [-1, 1, -2, -3]
         ], dtype=float)
         wektor = np.array([-13, 1, 21, -5], dtype=float)
-        metodaGaussaSeidla(macierz, wektor)
 
     elif menu == 7:
         macierz = np.array([
@@ -124,7 +120,6 @@ while 1:
             [0, 1, 0]
         ], dtype=float)
         wektor = np.array([3, 7, 5], dtype=float)
-        metodaGaussaSeidla(macierz, wektor)
 
     elif menu == 8:
         macierz = np.array([
@@ -133,7 +128,6 @@ while 1:
             [5, 1, 4]
         ], dtype=float)
         wektor = np.array([3, -4, 19], dtype=float)
-        metodaGaussaSeidla(macierz, wektor)
 
     elif menu == 9:
         macierz = np.array([
@@ -142,7 +136,6 @@ while 1:
             [0.9, 0.9, 3.6]
         ], dtype=float)
         wektor = np.array([4, 11, 13.5], dtype=float)
-        metodaGaussaSeidla(macierz, wektor)
 
     elif menu == 10:
         macierz = np.array([
@@ -151,11 +144,16 @@ while 1:
             [-0.1, -0.2, 1]
         ], dtype=float)
         wektor = np.array([1.5, 0.8, 0.7], dtype=float)
-        metodaGaussaSeidla(macierz, wektor)
 
+    elif menu == 0:
+        plik = np.loadtxt('własneWspółczynniki.txt', dtype=float, delimiter=';')
+        macierz = plik[:,:-1]
+        wektor = plik[:,-1]
+        print
     else:
         wybranoMetode = False
         print("Błąd! Nie wybrano metody!")
 
+    metodaGaussaSeidla(macierz, wektor)
     input("Aby kontynuować, naciśnij enter")
 
