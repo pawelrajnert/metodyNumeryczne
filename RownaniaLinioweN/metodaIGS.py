@@ -15,19 +15,16 @@ def metodaGaussaSeidla(macierz, wektor):
 
     if rowW != col:
         print("Wymiary macierzy i wektora nie zgadzają się- nie można zastosować metody Gaussa-Seidla.")
-        print("roww", rowW)
-        print("rcoool", col)
         return False
 
     print("Na wybranej macierz można zastosować metodę Gaussa-Seidla.")
-    warunekStopu, iloscPrzejsc = wyborWarunku()
+    warunekStopu, argument = wyborWarunku()
 
     xPoczatkowe = np.ones(rowW)
 
-    x = xPoczatkowe.copy()
-
     if warunekStopu == "it":
-        for przejscie in range(iloscPrzejsc):
+        x = xPoczatkowe.copy()
+        for przejscie in range(argument):
             for i in range(rowW):
                 sum = 0.
                 for j in range(rowW):
@@ -37,4 +34,19 @@ def metodaGaussaSeidla(macierz, wektor):
         print(x)
 
     if warunekStopu == "dok":
-        print("dokladnosc- do dopisania")
+        iteracjeDlaDokladnosci = 0
+        x = xPoczatkowe.copy()
+        while True:
+            iteracjeDlaDokladnosci += 1
+            xDlaPrzejscia = x.copy()
+            for i in range(rowW):
+                sum = 0.
+                for j in range(rowW):
+                    if i != j:
+                        sum += macierz[i, j] * x[j]
+                x[i] = (wektor[i] - sum) / macierz[i, i]
+            print(x)
+            if np.all(np.abs(x - xDlaPrzejscia)) <= argument:
+                break
+
+        print("Znaleziono rozwiązanie po liczbie iteracji: ", iteracjeDlaDokladnosci)
