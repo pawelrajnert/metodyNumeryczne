@@ -58,7 +58,12 @@ while 1:
           "      [-0.1 -0.2  1]    [x3]   [0.7]\n"
           "(x1 = 1, x2 = 1, x3 = 1)\n")
 
-    print("0) - wczytanie współczynników z pliku wsłasneWspółczynniki.txt\n")
+    print("0) - wczytanie współczynników z pliku wsłasneWspółczynniki.txt")
+    print("Obecnie wprowadzony przykład:")
+    print("      [ 1    2    0.3]  [x1]   [15]\n"
+          "      [ 0    1   -0.3]  [x2] = [8]\n"
+          "      [-0.1 -0.2  1]    [x3]   [7]\n")
+    print("(x1 = 10, x2 = 10, x3 = 10)\n")
 
     menu = int(input("Wybierz opcję: "))
     wybranoMetode = True
