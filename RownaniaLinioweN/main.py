@@ -114,12 +114,23 @@ while 1:
         wektor = np.array([-13, 1, 21, -5], dtype=float)
 
     elif menu == 7:
+        # macierz = np.array([
+        # [0, 0, 1],
+        # [1, 0, 0],
+        # [0, 1, 0]
+        # ], dtype=float)
+
+        # wektor = np.array([3, 7, 5], dtype=float)
+
+        # wersja po zamianie wierszy (mozliwa do rozwiazania, bo jest diagonalnie dominująca)
+
         macierz = np.array([
-            [0, 0, 1],
             [1, 0, 0],
-            [0, 1, 0]
+            [0, 1, 0],
+            [0, 0, 1]
         ], dtype=float)
-        wektor = np.array([3, 7, 5], dtype=float)
+
+        wektor = np.array([7, 5, 3], dtype=float)
 
     elif menu == 8:
         macierz = np.array([
@@ -147,8 +158,8 @@ while 1:
 
     elif menu == 0:
         plik = np.loadtxt('własneWspółczynniki.txt', dtype=float, delimiter=';')
-        macierz = plik[:,:-1]
-        wektor = plik[:,-1]
+        macierz = plik[:, :-1]
+        wektor = plik[:, -1]
         print
     else:
         wybranoMetode = False
@@ -156,4 +167,3 @@ while 1:
 
     metodaGaussaSeidla(macierz, wektor)
     input("Aby kontynuować, naciśnij enter")
-
