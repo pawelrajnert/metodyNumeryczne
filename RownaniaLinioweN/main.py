@@ -88,12 +88,12 @@ while 1:
 
     elif menu == 4:
         macierz = np.array([
-            [-0.0625, 0.5, 0, 0],
             [0.5, -0.0625, 0.1875, 0.0625],
+            [-0.0625, 0.5, 0, 0],
             [0.1875, 0, 0.375, 0.125],
             [0.0625, 0, 0.125, 0.25]
         ], dtype=float)
-        wektor = np.array([-1.625, 1.5, 1, 0.4375], dtype=float)
+        wektor = np.array([1.5, -1.625, 1, 0.4375], dtype=float)
 
     elif menu == 5:
         macierz = np.array([
