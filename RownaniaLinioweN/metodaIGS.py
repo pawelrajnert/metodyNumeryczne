@@ -1,14 +1,15 @@
-from metodySprawdzajace import czyDiagonalnieDominujaca, wyborWarunku, czyDodatnioOkreslona
+from metodySprawdzajace import czyDiagonalnieDominujaca, wyborWarunku, zamienKolejnosc
 import numpy as np
 
-def metodaGaussaSeidla(macierz, wektor):
-    if not czyDiagonalnieDominujaca(macierz) or not czyDodatnioOkreslona(macierz):
-        print("Nie można zastosować metody Gaussa-Seidla dla wybranej macierzy- nie jest diagonalnie dominująca lub dodatnio określona.")
-        return False
 
+def metodaGaussaSeidla(macierz, wektor):
+    kolejnosc = czyDiagonalnieDominujaca(macierz)
+    if kolejnosc is None:
+        print("Nie można zastosować metody Gaussa-Seidla dla wybranej macierzy - nie jest diagonalnie dominująca.")
+        return False
+    macierz, wektor = zamienKolejnosc(macierz, wektor, kolejnosc)
     row, col = macierz.shape
     rowW = wektor.shape[0]
-
     if row != col:
         print("Macierz nie jest kwadratowa- nie można zastosować metody Gaussa-Seidla.")
         return False
@@ -31,7 +32,7 @@ def metodaGaussaSeidla(macierz, wektor):
                     if i != j:
                         sum += macierz[i, j] * x[j]
                 x[i] = (wektor[i] - sum) / macierz[i, i]
-        print(x)
+        print("Znalezione rozwiązanie: ", x)
 
     if warunekStopu == "dok":
         iteracjeDlaDokladnosci = 0
@@ -49,4 +50,4 @@ def metodaGaussaSeidla(macierz, wektor):
             if np.all(np.abs(x - xDlaPrzejscia) <= argument):
                 break
 
-        print("Znaleziono rozwiązanie po liczbie iteracji: ", iteracjeDlaDokladnosci)
+        print("Znaleziono rozwiązanie po liczbie iteracji: ", iteracjeDlaDokladnosci, " - ", x)

@@ -24,22 +24,34 @@ def wyborWarunku():
 
 
 # Warunek działania metody Gaussa-Seidla- sprawdzenie czy macierz jest diagonalnie dominująca.
+# Metoda zwraca prawidłową kolejność ułożenia wierszy w macierzy,
+# a jeśli macierz nie jest diagonalnie dominująca, to zwraca None
 def czyDiagonalnieDominujaca(macierz):
+    unikalneIndeksyMaksimum = set()
+    kolejnosc = list()
     row, col = macierz.shape
     for i in range(row):
-        diagonala = abs(macierz[i, i])
-        resztaMacierzy = 0
+        maksimum = np.max(abs(macierz[i, :]))
+        resztaMacierzy = np.sum(abs(macierz[i, :])) - maksimum
+
+        if maksimum <= resztaMacierzy:
+            return None
 
         for j in range(col):
-            if i != j:
-                resztaMacierzy += abs(macierz[i, j])
+            if maksimum == abs(macierz[i][j]):
+                kolejnosc.append(j)
+                unikalneIndeksyMaksimum.add(j)
 
-        if diagonala < resztaMacierzy:
-            return False
+    if len(unikalneIndeksyMaksimum) < row: return None
+    return kolejnosc
 
-    return True
-
-
-# Warunek działania metody Gaussa-Seidla- sprawdzenie czy macierz jest dodatnio określona.
-def czyDodatnioOkreslona(macierz):
-    return np.all(np.linalg.eigvals(macierz) > 0)
+# Przestawianie wierszy macierzy i wektora według kolejności zwróconej przez metodę powyżej
+def zamienKolejnosc(macierz, wektor, kolejnosc):
+    j = 0
+    macierzKopia = np.copy(macierz)
+    wektorKopia = np.copy(wektor)
+    for i in kolejnosc:
+        macierz[i, :] = macierzKopia[j, :]
+        wektor[i] = wektorKopia[j]
+        j += 1
+    return macierz, wektor
