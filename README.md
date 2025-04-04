@@ -13,7 +13,8 @@ This repository contains solutions to mathematical problems written in **Python*
 ## Zadania
 
 ### Wykonane zadania:
-- [x] Zadanie 1 - szukanie miejsca zerowego funkcji nieliniowej
+- [x] Zadanie 1 - szukanie miejsca zerowego funkcji nieliniowej (metoda bisekcji i metoda stycznych)
+- [x] Zadanie 2- rozwiązywanie układu N równań liniowych z N niewiadomymi (metoda iteracyjna Gaussa-Seidla)
 
 ### Do zrobienia:
-- [ ] Zadanie 2- rozwiązywanie układu N równań liniowych z N niewiadomymi
+- [ ] Zadanie 3- metody interpolacji
