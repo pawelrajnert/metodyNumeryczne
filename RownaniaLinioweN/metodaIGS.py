@@ -5,6 +5,7 @@ import numpy as np
 def metodaGaussaSeidla(macierz, wektor, pom):
     row, col = macierz.shape
     rowW = wektor.shape[0]
+
     if row != col:
         print("Macierz nie jest kwadratowa- nie można zastosować metody Gaussa-Seidla.")
         return False
@@ -14,6 +15,7 @@ def metodaGaussaSeidla(macierz, wektor, pom):
         return False
 
     kolejnosc = 0
+
     if pom == 0:
         kolejnosc = czyDiagonalnieDominujaca(macierz)
 
@@ -26,8 +28,6 @@ def metodaGaussaSeidla(macierz, wektor, pom):
 
     if pom == 1:
         diagonalnaDominacjaPom(macierz)
-
-
 
     print("Na wybranej macierz można zastosować metodę Gaussa-Seidla.")
     warunekStopu, argument = wyborWarunku()

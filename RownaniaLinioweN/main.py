@@ -1,4 +1,3 @@
-from metodySprawdzajace import *
 from metodaIGS import *
 import numpy as np
 
@@ -6,6 +5,7 @@ print("Program do rozwiązywania układów N równań liniowych z N niewiadomymi
 
 while 1:
     print("0) - wczytanie współczynników z pliku własneWspółczynniki.txt\n")
+
     print("1)   [3 3 1] [x1]   [12]\n"
           "     [2 5 7] [x2] = [33]\n"
           "     [1 2 1] [x3]   [8]\n"
@@ -67,9 +67,9 @@ while 1:
           "     [2 2]  [x2] = [2]\n"
           "(Układ nieoznaczony (z pliku tekstowego nieoznaczona.txt)\n")
 
-
     menu = int(input("Wybierz opcję: "))
     wybranoMetode = True
+
     if menu == 1:
         macierz = np.array([
             [3, 3, 1],
@@ -171,6 +171,7 @@ while 1:
         macierz = plik[:, :-1]
         wektor = plik[:, -1]
         print
+
     else:
         wybranoMetode = False
         print("Błąd! Nie wybrano metody!")
