@@ -5,6 +5,7 @@ import numpy as np
 print("Program do rozwiązywania układów N równań liniowych z N niewiadomymi\n")
 
 while 1:
+    print("0) - wczytanie współczynników z pliku własneWspółczynniki.txt\n")
     print("1)   [3 3 1] [x1]   [12]\n"
           "     [2 5 7] [x2] = [33]\n"
           "     [1 2 1] [x3]   [8]\n"
@@ -58,7 +59,14 @@ while 1:
           "      [-0.1 -0.2  1]    [x3]   [0.7]\n"
           "(x1 = 1, x2 = 1, x3 = 1)\n")
 
-    print("0) - wczytanie współczynników z pliku własneWspółczynniki.txt")
+    print("11)  [2 2]  [x1]   [1]\n"
+          "     [2 2]  [x2] = [2]\n"
+          "(Układ sprzeczny (z pliku tekstowego sprzeczna.txt)\n")
+
+    print("12)  [2 2]  [x1]   [2]\n"
+          "     [2 2]  [x2] = [2]\n"
+          "(Układ nieoznaczony (z pliku tekstowego nieoznaczona.txt)\n")
+
 
     menu = int(input("Wybierz opcję: "))
     wybranoMetode = True
@@ -151,9 +159,26 @@ while 1:
         macierz = plik[:, :-1]
         wektor = plik[:, -1]
         print
+
+    elif menu == 11:
+        plik = np.loadtxt('sprzeczna.txt', dtype=float, delimiter=';')
+        macierz = plik[:, :-1]
+        wektor = plik[:, -1]
+        print
+
+    elif menu == 12:
+        plik = np.loadtxt('nieoznaczona.txt', dtype=float, delimiter=';')
+        macierz = plik[:, :-1]
+        wektor = plik[:, -1]
+        print
     else:
         wybranoMetode = False
         print("Błąd! Nie wybrano metody!")
 
-    if wybranoMetode: metodaGaussaSeidla(macierz, wektor)
+    if wybranoMetode and menu != 11 and menu != 12:
+        metodaGaussaSeidla(macierz, wektor, 0)
+
+    if wybranoMetode and (menu == 11 or menu == 12):
+        metodaGaussaSeidla(macierz, wektor, 1)
+
     input("Aby kontynuować, naciśnij enter")

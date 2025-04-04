@@ -55,3 +55,19 @@ def zamienKolejnosc(macierz, wektor, kolejnosc):
         wektor[i] = wektorKopia[j]
         j += 1
     return macierz, wektor
+
+# funkcja dla przykładów z pliku tekstowego o wynikach nieoznacoznych i sprzecznych
+def diagonalnaDominacjaPom(macierz):
+    row, col = macierz.shape
+    for i in range(row):
+        diagonala = abs(macierz[i, i])
+        resztaMacierzy = 0
+
+        for j in range(col):
+            if i != j:
+                resztaMacierzy += abs(macierz[i, j])
+
+        if diagonala < resztaMacierzy:
+            return False
+
+    return True

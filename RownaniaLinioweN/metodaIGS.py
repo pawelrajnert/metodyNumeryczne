@@ -1,13 +1,22 @@
-from metodySprawdzajace import czyDiagonalnieDominujaca, wyborWarunku, zamienKolejnosc
+from metodySprawdzajace import czyDiagonalnieDominujaca, wyborWarunku, zamienKolejnosc, diagonalnaDominacjaPom
 import numpy as np
 
 
-def metodaGaussaSeidla(macierz, wektor):
-    kolejnosc = czyDiagonalnieDominujaca(macierz)
-    if kolejnosc is None:
+def metodaGaussaSeidla(macierz, wektor, pom):
+    kolejnosc = 0
+    if pom == 0:
+        kolejnosc = czyDiagonalnieDominujaca(macierz)
+
+    if kolejnosc is None and pom == 0:
         print("Nie można zastosować metody Gaussa-Seidla dla wybranej macierzy - nie jest diagonalnie dominująca.")
         return False
-    macierz, wektor = zamienKolejnosc(macierz, wektor, kolejnosc)
+
+    if pom == 0:
+        macierz, wektor = zamienKolejnosc(macierz, wektor, kolejnosc)
+
+    if pom == 1:
+        diagonalnaDominacjaPom(macierz)
+
     row, col = macierz.shape
     rowW = wektor.shape[0]
     if row != col:
