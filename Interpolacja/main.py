@@ -8,9 +8,7 @@ def menu():
     print("3) wielomian ")
     print("4) funkcja trygonometryczna ")
     print("5) złożenie funkcji ")
-    print("6) wczytanie danych o funkcji z pliku tekstowego ")
-    # jesli dobrze rozumiem to jedna funkcja ma byc tez z pliku?
-    # w sensie podaje sie punkty i tak sie zrobi funkcja (jest metoda w wykladzie)?
+    print("6) funkcja testowa (efekt Rungego) ")
 
     menu = int(input("Wybierz opcję: "))
     wybranoMetode = True
@@ -19,48 +17,56 @@ def menu():
         print("Wybrano funkcję liniową.")
         print("Funkcja jest w postaci: ")
         print("2x + 6")
-        wykresPoczatkowy(liniowa, -3, 3)
+        f = liniowa
+
 
     elif menu == 2:
         print("Wybrano funkcję moduł z x.")
         print("Funkcja jest postaci: ")
         print("|x|")
-        wykresPoczatkowy(modul, -3, 3)
+        f = modul
+
 
     elif menu == 3:
         print("Wybrano wielomian.")
         print("Wielomian jest w postaci: ")
         print("-x^3 + x^2 + 3x - 4 ")
-        wykresPoczatkowy(wielomian, -3, 3)
+        f = wielomian
+
 
     elif menu == 4:
         print("Wybrano funkcję trygonometryczną.")
         print("Funkcja trygonometryczna jest postaci: ")
         print("2sin(x) + 3cos(x) - 2")
-        wykresPoczatkowy(trygonometryczna, -math.pi, math.pi)
+        f = trygonometryczna
+
 
     elif menu == 5:
         print("Wybrano złożenie funkcji.")
         print("Funkcja złożona jest postaci:")
         print("5sin(x) - 3x^2 + 2^x - |x| + 4")
-        wykresPoczatkowy(zlozenie, -math.pi, math.pi)
+        f = zlozenie
 
     elif menu == 6:
-        print("Wybrano wczytanie funkcji z pliku tekstowego 'funkcja.txt'.")
-        # do zrobienia
-        #wykresPoczatkowy(f, -math.pi, math.pi)
+        print("Wybrano testową funkcję.")
+        print("1/(1+25x^2)")
+        f = testowa
 
     else:
         wybranoMetode = False
         print("Błąd! Nie wybrano metody!")
 
     if wybranoMetode:
+        wykresPoczatkowy(f, -math.pi, math.pi)
         print("Podaj pierwszy koniec przedziału interpolacji: ")
         x1 = float(input())
         print("Podaj drugi koniec przedziału interpolacji: ")
         x2 = float(input())
-        if x2 < x1:
-            interpolacja()
+        print("Podaj liczbę węzłów równoodległych")
+        ileWezlow = int(input())
+
+        if x2 > x1 and ileWezlow > 0:
+            wykresInterpolacyjny(f, x1, x2, ileWezlow)
 
 
 print("Interpolacja metodą Newtona dla węzłów równoodległych")
