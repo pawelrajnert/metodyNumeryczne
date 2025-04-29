@@ -15,6 +15,7 @@ This repository contains solutions to mathematical problems written in **Python*
 ### Wykonane zadania:
 - [x] Zadanie 1 - szukanie miejsca zerowego funkcji nieliniowej (metoda bisekcji i metoda stycznych)
 - [x] Zadanie 2- rozwiązywanie układu N równań liniowych z N niewiadomymi (metoda iteracyjna Gaussa-Seidla)
+- [x] Zadanie 3- metoda interpolacji Newtona dla węzłów równoodległych
 
 ### Do zrobienia:
-- [ ] Zadanie 3- metody interpolacji
+- [ ] Zadanie 4- całkowanie wielomianów Czebyszewa
