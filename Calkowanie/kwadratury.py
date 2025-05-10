@@ -32,7 +32,7 @@ def wzorSimpsona(funkcja, a, b, n):
             suma += 2 * funkcja(a + i * h) * funkcjaWagowa(a + i * h)
         else:
             suma += 4 * funkcja(a + i * h) * funkcjaWagowa(a + i * h)
-    # według wzoru, jeśli rozważamy nieparzysty indeks to mamy wagę 2, a jeśli parzysty to wagę 4
+    # według wzoru, jeśli rozważamy nieparzysty indeks to mamy wagę 4, a jeśli parzysty to wagę 2
 
     return (h * suma) / 3
 
