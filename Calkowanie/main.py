@@ -45,7 +45,7 @@ def menu():
             print(kwadraturaGaussaCzebyszewa(funkcja, i))
 
     elif menu == 4:
-        funkcja = sim
+        funkcja = wielomian
         dokladnosc = float(input("Wprowadź dokładność obliczeń: "))
         print("Obliczenia dla kwadratury Newtona-Cotesa: ")
         print(granicaNewtonaCotesa(funkcja, dokladnosc))
