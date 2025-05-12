@@ -10,73 +10,38 @@ def menu():
     print("4) f(x) = x^3 + 7x^2 - 15")
     print("5) f(x) = 2^x - 2")
     print("6) f(x) = x + 6")
-
+    print("7) f(x) = (e^x + 4sin(x^2) - 3x^2 + 12) / (1 + x ** 2)")
+    print("8) f(x) = sin(e^x + 4x)")
     menu = int(input("Wybierz opcję: "))
-    wybranoMetode = True
+    funkcja = None
 
     if menu == 1:
         funkcja = sinMinus2
-        dokladnosc = float(input("Wprowadź dokładność obliczeń: "))
-        print("Obliczenia dla kwadratury Newtona-Cotesa: ")
-        print(granicaNewtonaCotesa(funkcja, dokladnosc))
-        print("Obliczenia dla kwadratury Gaussa-Czebyszewa: ")
-        for i in range(2, 6):
-            print("Kwadratura Gaussa-Czebyszewa dla", i, "węzłów.")
-            print(kwadraturaGaussaCzebyszewa(funkcja, i))
-
     elif menu == 2:
         funkcja = przyklad
-        dokladnosc = float(input("Wprowadź dokładność obliczeń: "))
-        print("Obliczenia dla kwadratury Newtona-Cotesa: ")
-        print(granicaNewtonaCotesa(funkcja, dokladnosc))
-        print("Obliczenia dla kwadratury Gaussa-Czebyszewa: ")
-        for i in range(2, 6):
-            print("Kwadratura Gaussa-Czebyszewa dla", i, "węzłów.")
-            print(kwadraturaGaussaCzebyszewa(funkcja, i))
-
     elif menu == 3:
         funkcja = sim
-        dokladnosc = float(input("Wprowadź dokładność obliczeń: "))
-        print("Obliczenia dla kwadratury Newtona-Cotesa: ")
-        print(granicaNewtonaCotesa(funkcja, dokladnosc))
-        print("Obliczenia dla kwadratury Gaussa-Czebyszewa: ")
-        for i in range(2, 6):
-            print("Kwadratura Gaussa-Czebyszewa dla", i, "węzłów.")
-            print(kwadraturaGaussaCzebyszewa(funkcja, i))
-
     elif menu == 4:
         funkcja = wielomian
-        dokladnosc = float(input("Wprowadź dokładność obliczeń: "))
-        print("Obliczenia dla kwadratury Newtona-Cotesa: ")
-        print(granicaNewtonaCotesa(funkcja, dokladnosc))
-        print("Obliczenia dla kwadratury Gaussa-Czebyszewa: ")
-        for i in range(2, 6):
-            print("Kwadratura Gaussa-Czebyszewa dla", i, "węzłów.")
-            print(kwadraturaGaussaCzebyszewa(funkcja, i))
-
     elif menu == 5:
         funkcja = wykladnicza
-        dokladnosc = float(input("Wprowadź dokładność obliczeń: "))
-        print("Obliczenia dla kwadratury Newtona-Cotesa: ")
-        print(granicaNewtonaCotesa(funkcja, dokladnosc))
-        print("Obliczenia dla kwadratury Gaussa-Czebyszewa: ")
-        for i in range(2, 6):
-            print("Kwadratura Gaussa-Czebyszewa dla", i, "węzłów.")
-            print(kwadraturaGaussaCzebyszewa(funkcja, i))
-
     elif menu == 6:
         funkcja = liniowa
-        dokladnosc = float(input("Wprowadź dokładność obliczeń: "))
-        print("Obliczenia dla kwadratury Newtona-Cotesa: ")
-        print(granicaNewtonaCotesa(funkcja, dokladnosc))
-        print("Obliczenia dla kwadratury Gaussa-Czebyszewa: ")
-        for i in range(2, 6):
-            print("Kwadratura Gaussa-Czebyszewa dla", i, "węzłów.")
-            print(kwadraturaGaussaCzebyszewa(funkcja, i))
-
+    elif menu == 7:
+        funkcja = zlozenie
+    elif menu == 8:
+        funkcja = zlozenie2
     else:
-        wybranoMetode = False
         print("Błąd! Nie wybrano metody!")
+        return
+    dokladnosc = float(input("Wprowadź dokładność obliczeń: "))
+    print("Obliczenia dla kwadratury Newtona-Cotesa: ")
+    print(granicaNewtonaCotesa(funkcja, dokladnosc))
+    print("Obliczenia dla kwadratury Gaussa-Czebyszewa: ")
+    for i in range(2, 6):
+        print("Kwadratura Gaussa-Czebyszewa dla", i, "węzłów.")
+        print(kwadraturaGaussaCzebyszewa(funkcja, i))
+
 
 
 print("Program implementujący dwie metody całkowania numerycznego:")

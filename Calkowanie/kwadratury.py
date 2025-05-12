@@ -5,7 +5,7 @@ from funkcje import funkcjaWagowa
 
 def kwadraturaGaussaCzebyszewa(funkcja, ileWezlow):
     wynik = .0
-    A = math.pi / (ileWezlow)
+    A = math.pi / ileWezlow
     # wzór według kalkulatora Wolfram (strona mathworld.wolfram)
     # w przypadku implementacji wzoru z prezentacji wykładowej, wyniki dla węzłów są przesunięte o 1
     if ileWezlow in (2, 3, 4, 5):
@@ -37,14 +37,13 @@ def wzorSimpsona(funkcja, a, b, n):
     return (h * suma) / 3
 
 
-def kwadraturaNewtonaCotesa(funckja, a, b, dokladnosc):
+def kwadraturaNewtonaCotesa(funkcja, a, b, dokladnosc):
     n = 2
-    wynikPoprzedni = wzorSimpsona(funckja, a, b, n)  # 1 wywołanie funkcji
+    wynikPoprzedni = wzorSimpsona(funkcja, a, b, n)  # 1 wywołanie funkcji
 
     while 1:
         n += 2
-        wynikKolejny = wzorSimpsona(funckja, a, b, n)
-
+        wynikKolejny = wzorSimpsona(funkcja, a, b, n)
         if (wynikKolejny - wynikPoprzedni) < dokladnosc:  # jeśli spełniamy dokładność to kończymy działanie algorytmu
             return wynikKolejny
 
