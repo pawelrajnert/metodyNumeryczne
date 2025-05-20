@@ -1,8 +1,7 @@
-import math
-
 import numpy as np
 import matplotlib.pyplot as plt
 
+from aproksymacja import *
 
 # metoda Gaussa-Czebyszewa rozwiązywania całek z zadania 4
 def kwadraturaGaussaCzebyszewa(funkcja, ileWezlow):
@@ -35,9 +34,12 @@ def transformacja(a, b, x):
     return (2 * x - a - b) / (b - a)
 
 
-def wykresPoczatkowy(f, a, b):
+def wykres(f, wspolczynnikiA, a, b):
     xDane = np.linspace(a, b)
     yDane = np.array([f(x) for x in xDane])
-    plt.plot(xDane, yDane)
-    plt.title("Funkcja początkowa")
+    yPoAproksymacji = [aproksymacja(x, wspolczynnikiA) for x in xDane]
+    plt.plot(xDane, yDane, label="Funkcja początkowa", color="black")
+    plt.plot(xDane,yPoAproksymacji,label="Funkcja aproksymowana", color="red")
+    plt.title("Wykres funkcji podstawowej oraz aproksymacji funkcji")
+    plt.legend()
     plt.show()

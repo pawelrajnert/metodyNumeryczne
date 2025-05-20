@@ -1,4 +1,4 @@
-from dodatkoweFunkcje import *
+import math
 
 
 # strona 26 z prezentacji- rekurencyjne tworzenie wielomianów Czebyszewa
@@ -19,6 +19,7 @@ def tworzenieWielomianowCzebyszewa(stopien, x):  # stopien- stopień wielomianu,
 
 # obliczamy współczynnik A, potrzebujemy do tego obliczyc calke za pomoca naszej kwadratury + wynik z funkcji T
 def wspolczynnikA(funkcja, wezly, stopien):
+    from dodatkoweFunkcje import kwadraturaGaussaCzebyszewa
     wspolczynnikiA = []
 
     for i in range(0, stopien + 1):
@@ -37,14 +38,11 @@ def wspolczynnikA(funkcja, wezly, stopien):
 
     return wspolczynnikiA
 
-def aproksymacja(funkcja, wezly, stopien, x):
-    tablicaA = wspolczynnikA(funkcja, wezly, stopien)
-    tablicaT = tworzenieWielomianowCzebyszewa(stopien, x)
+def aproksymacja(x, wspolczynnikA):
+    T = tworzenieWielomianowCzebyszewa(len(wspolczynnikA) - 1, x)
+    wynik = wspolczynnikA[0]/2 * T[0]
 
-    # krok aproksymacji
-    wynik = tablicaA[0]/2 * tablicaT[0]
-
-    for i in range(1, stopien + 1):
-        wynik += tablicaA[i] * tablicaT[i]
+    for i in range(len(wspolczynnikA)):
+        wynik += wspolczynnikA[i] * T[i]
 
     return wynik

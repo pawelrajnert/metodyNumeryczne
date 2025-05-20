@@ -39,13 +39,16 @@ def menu():
         funkcja = zlozenie2
     elif menu == 9:
         funkcja = modulX
-        print(tworzenieWielomianowCzebyszewa(5, 0.5))
-        print(wspolczynnikA(modulX,5,5))
-        print(aproksymacja(modulX,5,5,0.5))
+        test = wspolczynnikA(modulX,5,5)
+        wykres(modulX, test, -1, 1)
     else:
         print("Błąd! Nie wybrano metody!")
         return
 
+    print("Wybierz tryb pracy programu:")
+    print("1) aproksymacja wielomianem wybranego stopnia")
+    print("2) aproksymacja do osiągnięcia zadanej dokładności (błąd aproksymacji)")
+    wybor = int(input("Podaj swój wybór:"))
     a = float(input("Podaj lewy koniec przedziału: "))
     b = float(input("Podaj prawy koniec przedziału"))
     wezly = int(input("Podaj liczbę węzłów do rozwiązania całki metodą Gaussa-Czebyszewa (2, 3, 4 lub 5): "))
