@@ -19,10 +19,6 @@ def menu():
 
     if menu == 1:
         funkcja = sinMinus2
-        print(tworzenieWielomianowCzebyszewa(2, 0.5))
-        print(tworzenieWielomianowCzebyszewa(3, 0.5))
-        print(wspolczynnikA(sinMinus2,3,3,0.5))
-        print(aproksymacja(modulX,3,3,0.5))
     elif menu == 2:
         funkcja = przyklad
     elif menu == 3:
@@ -39,8 +35,12 @@ def menu():
         funkcja = zlozenie2
     elif menu == 9:
         funkcja = modulX
-        test = wspolczynnikA(modulX,5,5)
+        test = wspolczynnikA(modulX, 3, 3)
+        testv2 = wspolczynnikA(modulX, 15, 15)
         wykres(modulX, test, -1, 1)
+        print(bladAproksymacji(modulX, test, -1, 1))
+        wykres(modulX, testv2, -1, 1)
+        print(bladAproksymacji(modulX, testv2, -1, 1))
     else:
         print("Błąd! Nie wybrano metody!")
         return

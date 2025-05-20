@@ -1,5 +1,7 @@
 import math
 
+import numpy as np
+
 
 # strona 26 z prezentacji- rekurencyjne tworzenie wielomianów Czebyszewa
 # jest to tworzenie Tk do wzoru, a dokladnie jego wartosci
@@ -23,26 +25,37 @@ def wspolczynnikA(funkcja, wezly, stopien):
     wspolczynnikiA = []
 
     for i in range(0, stopien + 1):
-
         def mnozenieFunkcji(x, pom=i):
             T = tworzenieWielomianowCzebyszewa(stopien, x)
             return funkcja(x) * T[pom]
 
-        if i == 0:
-            wynik = 1 / math.pi * kwadraturaGaussaCzebyszewa(mnozenieFunkcji, wezly)
-
-        else:
-            wynik = 2 / math.pi * kwadraturaGaussaCzebyszewa(mnozenieFunkcji, wezly)
+        wynik = 2 / math.pi * kwadraturaGaussaCzebyszewa(mnozenieFunkcji, wezly)
 
         wspolczynnikiA.append(wynik)
 
     return wspolczynnikiA
 
+
 def aproksymacja(x, wspolczynnikA):
     T = tworzenieWielomianowCzebyszewa(len(wspolczynnikA) - 1, x)
-    wynik = wspolczynnikA[0]/2 * T[0]
+    wynik = wspolczynnikA[0] / 2 * T[0]
 
-    for i in range(len(wspolczynnikA)):
+    for i in range(1, len(wspolczynnikA)):
         wynik += wspolczynnikA[i] * T[i]
 
     return wynik
+
+
+def bladAproksymacji(funkcja, wspolczynnikiA, a, b):
+    blad = .0
+    xDane = np.linspace(a, b)
+    from dodatkoweFunkcje import transformacja
+
+    for x in xDane:
+        przedzial = transformacja(a, b, x)
+        F = funkcja(x)
+        A = aproksymacja(przedzial, wspolczynnikiA)
+        blad += (F - A) ** 2
+
+    blad = math.sqrt(blad / 50)  # bo 50 to defaultowa liczba punktów
+    return blad
