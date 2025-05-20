@@ -2,6 +2,7 @@ from dodatkoweFunkcje import *
 from funkcje import *
 from aproksymacja import *
 
+
 def menu():
     print("Wybierz wielomian do aproksymacji:")
     print("1) f(x) = sin(x-2)")
@@ -12,6 +13,7 @@ def menu():
     print("6) f(x) = x + 6")
     print("7) f(x) = (e^x + 4sin(x^2) - 3x^2 + 12) / (1 + x ** 2)")
     print("8) f(x) = sin(e^x + 4x)")
+    print("9) f(x) = |x + 3|")
     menu = int(input("Wybierz opcję: "))
     funkcja = None
 
@@ -19,6 +21,8 @@ def menu():
         funkcja = sinMinus2
         print(tworzenieWielomianowCzebyszewa(2, 0.5))
         print(tworzenieWielomianowCzebyszewa(3, 0.5))
+        print(wspolczynnikA(sinMinus2,3,3,0.5))
+        print(aproksymacja(modulX,3,3,0.5))
     elif menu == 2:
         funkcja = przyklad
     elif menu == 3:
@@ -33,6 +37,11 @@ def menu():
         funkcja = zlozenie
     elif menu == 8:
         funkcja = zlozenie2
+    elif menu == 9:
+        funkcja = modulX
+        print(tworzenieWielomianowCzebyszewa(5, 0.5))
+        print(wspolczynnikA(modulX,5,5))
+        print(aproksymacja(modulX,5,5,0.5))
     else:
         print("Błąd! Nie wybrano metody!")
         return

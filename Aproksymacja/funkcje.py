@@ -35,3 +35,7 @@ def zlozenie2(x):
 
 def funkcjaWagowa(x):
     return 1 / math.sqrt(1 - x ** 2)
+
+
+def modulX(x):
+    return abs(x)

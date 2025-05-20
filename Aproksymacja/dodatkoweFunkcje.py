@@ -3,6 +3,7 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 # metoda Gaussa-Czebyszewa rozwiązywania całek z zadania 4
 def kwadraturaGaussaCzebyszewa(funkcja, ileWezlow):
     wynik = .0
@@ -18,6 +19,7 @@ def kwadraturaGaussaCzebyszewa(funkcja, ileWezlow):
 
     return wynik
 
+
 # schemat Hornera, wykorzystywany do obliczania współczynników wielomianu zgodnie z poleceniem
 def horner(wspolczynniki, x):
     wynik = 0
@@ -27,9 +29,11 @@ def horner(wspolczynniki, x):
 
     return wynik
 
+
 # ostatni slajd prezentacji- przekształcenie dowolnego przedziału [a, b] na przedział [-1, 1]
 def transformacja(a, b, x):
     return (2 * x - a - b) / (b - a)
+
 
 def wykresPoczatkowy(f, a, b):
     xDane = np.linspace(a, b)
