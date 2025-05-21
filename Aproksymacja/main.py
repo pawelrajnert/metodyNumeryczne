@@ -13,7 +13,7 @@ def menu():
     print("6) f(x) = x + 6")
     print("7) f(x) = (e^x + 4sin(x^2) - 3x^2 + 12) / (1 + x ** 2)")
     print("8) f(x) = sin(e^x + 4x)")
-    print("9) f(x) = |x + 3|")
+    print("9) f(x) = |x|")
     menu = int(input("Wybierz opcję: "))
     funkcja = None
 
@@ -35,12 +35,6 @@ def menu():
         funkcja = zlozenie2
     elif menu == 9:
         funkcja = modulX
-        test = wspolczynnikA(modulX, 3, 3)
-        testv2 = wspolczynnikA(modulX, 15, 15)
-        wykres(modulX, test, -1, 1)
-        print(bladAproksymacji(modulX, test, -1, 1))
-        wykres(modulX, testv2, -1, 1)
-        print(bladAproksymacji(modulX, testv2, -1, 1))
     else:
         print("Błąd! Nie wybrano metody!")
         return
@@ -48,15 +42,22 @@ def menu():
     print("Wybierz tryb pracy programu:")
     print("1) aproksymacja wielomianem wybranego stopnia")
     print("2) aproksymacja do osiągnięcia zadanej dokładności (błąd aproksymacji)")
-    wybor = int(input("Podaj swój wybór:"))
+
+    wybor = int(input("Podaj swój wybór: "))
     a = float(input("Podaj lewy koniec przedziału: "))
-    b = float(input("Podaj prawy koniec przedziału"))
-    wezly = int(input("Podaj liczbę węzłów do rozwiązania całki metodą Gaussa-Czebyszewa (2, 3, 4 lub 5): "))
-    stopien = int(input("Podaj stopień wielomianu aproksymującego: "))
+    b = float(input("Podaj prawy koniec przedziału: "))
+    wezly = int(input("Podaj liczbę węzłów do rozwiązania całki metodą Gaussa-Czebyszewa: "))
+
+    if wybor == 1:
+        stopien = int(input("Podaj stopień wielomianu aproksymującego: "))
+        wykres(funkcja, wspolczynnikA(funkcja, wezly, stopien), a, b)
+
+    elif wybor == 2:
+        blad = float(input("Wprowadź oczekiwaną wartość błędu: "))
+        wykresBlad(funkcja, wezly, a, b, blad)
 
 
 print("Program implementujący metodę aproksymacji opartą o wielomiany Czebyszewa")
-print("oparty o kwadraturę Gaussa-Czebyszewa (dla 2, 3, 4 lub 5 węzłów)\n")
 
 while 1:
     menu()

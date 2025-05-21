@@ -30,14 +30,34 @@ def transformacja(a, b, x):
     return (2 * x - a - b) / (b - a)
 
 
-def wykres(f, wspolczynnikiA, a, b):
+def wykres(funkcja, wspolczynnikiA, a, b):
     from aproksymacja import aproksymacja
 
     xDane = np.linspace(a, b)
-    yDane = np.array([f(x) for x in xDane])
+    yDane = np.array([funkcja(x) for x in xDane])
     yPoAproksymacji = [aproksymacja(transformacja(a, b, x), wspolczynnikiA) for x in xDane]
 
     plt.plot(xDane, yDane, label="Funkcja początkowa", color="black")
-    plt.plot(xDane, yPoAproksymacji, label="Funkcja aproksymowana", color="red")
+    plt.plot(xDane, yPoAproksymacji, label="Funkcja po aproksymacji", color="red")
+    plt.legend()
+    plt.show()
+
+
+def wykresBlad(funkcja, wezly, a, b, blad):
+    from aproksymacja import aproksymacjaBledem, podajStopien
+
+    xDane = np.linspace(a, b)
+    yDane = np.array([funkcja(x) for x in xDane])
+    yPoAproksymacji = [aproksymacjaBledem(funkcja, x, wezly, blad, a, b) for x in xDane]
+
+    pom = podajStopien()
+    if (pom != 30):
+        print("Znaleziono rozwiązanie o zadanej dokładności, z wykorzystaniem wielomianu stopnia:", pom)
+
+    else:
+        print("Nie znaleziono rozwiązania o zadanej dokładności, wynik dla wielomianu stopnia:", pom)
+
+    plt.plot(xDane, yDane, label="Funkcja początkowa", color="black")
+    plt.plot(xDane, yPoAproksymacji, label="Funkcja po aproksymacji", color="red")
     plt.legend()
     plt.show()
