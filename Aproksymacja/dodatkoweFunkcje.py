@@ -2,6 +2,8 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 
+from aproksymacja import wspolczynnikA
+
 
 # metoda Gaussa-Czebyszewa rozwiązywania całek z zadania 4
 def kwadraturaGaussaCzebyszewa(funkcja, ileWezlow):
@@ -31,12 +33,13 @@ def transformacja(a, b, x):
 
 
 def wykres(funkcja, wspolczynnikiA, a, b):
-    from aproksymacja import aproksymacja
+    from aproksymacja import aproksymacja, bladAproksymacji
 
     xDane = np.linspace(a, b)
     yDane = np.array([funkcja(x) for x in xDane])
     yPoAproksymacji = [aproksymacja(transformacja(a, b, x), wspolczynnikiA) for x in xDane]
 
+    print("Błąd aproksymacji: ", bladAproksymacji(funkcja, wspolczynnikiA, a, b))
     plt.plot(xDane, yDane, label="Funkcja początkowa", color="black")
     plt.plot(xDane, yPoAproksymacji, label="Funkcja po aproksymacji", color="red")
     plt.legend()
@@ -44,7 +47,7 @@ def wykres(funkcja, wspolczynnikiA, a, b):
 
 
 def wykresBlad(funkcja, wezly, a, b, blad):
-    from aproksymacja import aproksymacjaBledem, podajStopien
+    from aproksymacja import aproksymacjaBledem, podajStopien, bladAproksymacji, wspolczynnikA
 
     xDane = np.linspace(a, b)
     yDane = np.array([funkcja(x) for x in xDane])
@@ -57,6 +60,8 @@ def wykresBlad(funkcja, wezly, a, b, blad):
     else:
         print("Nie znaleziono rozwiązania o zadanej dokładności, wynik dla wielomianu stopnia:", pom)
 
+    A = wspolczynnikA(funkcja, wezly, pom)
+    print("Błąd aproksymacji: ", bladAproksymacji(funkcja, A, a, b))
     plt.plot(xDane, yDane, label="Funkcja początkowa", color="black")
     plt.plot(xDane, yPoAproksymacji, label="Funkcja po aproksymacji", color="red")
     plt.legend()
