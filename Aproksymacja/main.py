@@ -6,34 +6,31 @@ from aproksymacja import *
 def menu():
     print("Wybierz wielomian do aproksymacji:")
     print("1) f(x) = sin(x-2)")
-    print("2) f(x) = (1 - x^2)^3/2 * cos(x)")
-    print("3) f(x) = x^2 + 3")
-    print("4) f(x) = x^3 + 7x^2 - 15")
-    print("5) f(x) = 2^x - 2")
-    print("6) f(x) = x + 6")
-    print("7) f(x) = (e^x + 4sin(x^2) - 3x^2 + 12) / (1 + x ** 2)")
-    print("8) f(x) = sin(e^x + 4x)")
-    print("9) f(x) = |x|")
+    print("2) f(x) = x^2 + 3")
+    print("3) f(x) = x^3 + 7x^2 - 15")
+    print("4) f(x) = 2^x - 2")
+    print("5) f(x) = x + 6")
+    print("6) f(x) = (e^x + 4sin(x^2) - 3x^2 + 12) / (1 + x ** 2)")
+    print("7) f(x) = sin(e^x + 4x)")
+    print("8) f(x) = |x|")
     menu = int(input("Wybierz opcję: "))
     funkcja = None
 
     if menu == 1:
         funkcja = sinMinus2
     elif menu == 2:
-        funkcja = przyklad
-    elif menu == 3:
         funkcja = sim
-    elif menu == 4:
+    elif menu == 3:
         funkcja = wielomian
-    elif menu == 5:
+    elif menu == 4:
         funkcja = wykladnicza
-    elif menu == 6:
+    elif menu == 5:
         funkcja = liniowa
-    elif menu == 7:
+    elif menu == 6:
         funkcja = zlozenie
-    elif menu == 8:
+    elif menu == 7:
         funkcja = zlozenie2
-    elif menu == 9:
+    elif menu == 8:
         funkcja = modulX
     else:
         print("Błąd! Nie wybrano metody!")

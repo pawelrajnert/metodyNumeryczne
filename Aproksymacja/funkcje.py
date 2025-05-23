@@ -3,16 +3,12 @@ import math
 from dodatkoweFunkcje import horner
 
 
-def przyklad(x):
-    return (1 - x ** 2) ** (3 / 2) * math.cos(x)
-
-
 def sinMinus2(x):
     return math.sin(x - 2)
 
 
 def sim(x):
-    wspolczynniki = [1, 3]
+    wspolczynniki = [1, 0, 3]
     return horner(wspolczynniki, x)
 
 
